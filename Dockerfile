@@ -2,6 +2,8 @@ FROM java:8-jre-alpine
 
 MAINTAINER Chuanjian Wang <me@ckeyer.com>
 
+RUN apk add --update bash wget vim 
+
 ENV SCALA_HOME=/usr/local/scala
 ENV PATH=$PATH:$SCALA_HOME/bin
 ENV SCALA_VERSION=2.12.0
