@@ -1,17 +1,13 @@
-FROM alpine:edge
+FROM java:8-jre-alpine
 
 MAINTAINER Chuanjian Wang <me@ckeyer.com>
 
 ENV SCALA_HOME=/usr/local/scala
 ENV PATH=$PATH:$SCALA_HOME/bin
+ENV SCALA_VERSION=2.12.0
 
-RUN apk add --update bash wget openjdk8-jre && \
-	rm -rf /var/cache/apk/*
-
-RUN wget -O /tmp/scala.tgz http://downloads.lightbend.com/scala/2.11.8/scala-2.11.8.tgz && \
+RUN wget -O /tmp/scala.tgz http://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
 	cd /usr/local && \
 	tar zxf /tmp/scala.tgz && \
-	mv scala-2.11.8 scala && \ 
+	mv scala-${SCALA_VERSION} scala && \
 	rm -rf /tmp/*
-
-
